@@ -9,7 +9,7 @@ namespace WCFBasicHttpSample
     {
         public string Echo(string message)
         {
-            return message;
+            return message.ToUpper();
         }
 
         public Stream DownloadStream()
