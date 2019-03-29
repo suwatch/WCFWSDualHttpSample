@@ -1,18 +1,18 @@
 ﻿using System.IO;
 using System.ServiceModel;
 
-namespace WCFBasicHttpSample
+namespace WCFWSDualHttpSample
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IEchoCallback), SessionMode = SessionMode.Required)]
     public interface IEcho
     {
         [OperationContract]
-        string Echo(string message);
+        void Echo(string message);
+    }
 
+    public interface IEchoCallback
+    {
         [OperationContract]
-        Stream DownloadStream();
-
-        [OperationContract]
-        void UploadStream(Stream stream);
+        void Echo(string message);
     }
 }
